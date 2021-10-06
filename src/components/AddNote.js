@@ -27,8 +27,11 @@ const AddNote = ({ showAlert }) => {
       <h1>Add your daily journal</h1>
       <form className="my-3">
         <div className="mb-3">
-          <label htmlFor="title" className="form-label">
-            Title
+          <label htmlFor="title" className="form-label fw-bold">
+            Title{" "}
+            <span className="text-danger">
+              (Min. length should be 5 characters)
+            </span>
           </label>
           <input
             type="text"
@@ -37,28 +40,32 @@ const AddNote = ({ showAlert }) => {
             name="title"
             aria-describedby="emailHelp"
             onChange={handleChange}
-            minLength={5}
             required
             value={note.title}
+            minLength={5}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">
-            Description
+          <label htmlFor="description" className="form-label fw-bold">
+            Description{" "}
+            <span className="text-danger">
+              (Min. length should be 5 characters)
+            </span>
           </label>
-          <input
+          <textarea
             type="text"
             className="form-control"
             id="description"
             name="description"
             onChange={handleChange}
-            minLength={5}
             required
             value={note.description}
+            row="3"
+            minLength={5}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tag" className="form-label">
+          <label htmlFor="tag" className="form-label fw-bold">
             Tag
           </label>
           <input
@@ -67,9 +74,9 @@ const AddNote = ({ showAlert }) => {
             id="tag"
             name="tag"
             onChange={handleChange}
-            minLength={5}
             required
             value={note.tag}
+            minLength={5}
           />
         </div>
 

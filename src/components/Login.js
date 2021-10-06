@@ -8,10 +8,13 @@ const Login = ({ showAlert }) => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   let history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const response = await fetch(`${API}/auth/login`, {
       method: "POST",
       headers: {
@@ -32,6 +35,7 @@ const Login = ({ showAlert }) => {
     } else {
       showAlert("Invalid Credentials", "danger");
     }
+    setLoading(false);
   };
 
   const onChange = (e) => {
@@ -70,7 +74,14 @@ const Login = ({ showAlert }) => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Submit
+          {loading && (
+            <span
+              class="spinner-border spinner-border-sm mx-1"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          )}
+          Login
         </button>
       </form>
     </div>

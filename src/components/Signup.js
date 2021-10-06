@@ -10,12 +10,14 @@ const Signup = ({ showAlert }) => {
     cpassword: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   let history = useHistory();
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     if (credentials.password !== credentials.cpassword) {
-      //TODO: Add error alert here
-      showAlert("Password does not match with confirm password", "danger");
+      showAlert("Passwords does not match", "danger");
       setCredentials({ name: "", email: "", password: "", cpassword: "" });
       return { error: "Password does not match with confirm password" };
     }
@@ -41,6 +43,7 @@ const Signup = ({ showAlert }) => {
     } else {
       showAlert("Invalid details", "danger");
     }
+    setLoading(false);
   };
 
   const onChange = (e) => {
@@ -108,7 +111,14 @@ const Signup = ({ showAlert }) => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Submit
+          {loading && (
+            <span
+              class="spinner-border spinner-border-sm mx-1"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          )}
+          Signup
         </button>
       </form>
     </div>

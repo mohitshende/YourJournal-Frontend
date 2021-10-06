@@ -9,13 +9,17 @@ const Notes = ({ showAlert }) => {
   const context = useContext(noteContext);
   const { notes, getAllNotes, editNote } = context;
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
+      setLoading(true);
       getAllNotes();
+      setLoading(false);
     } else {
       history.push("/login");
     }
-  }); // [notes] can be used here as dependancy
+  }, [getAllNotes]); // [notes] can be used here as dependancy
 
   const ref = useRef(null);
   const refClose = useRef(null);
@@ -152,19 +156,33 @@ const Notes = ({ showAlert }) => {
 
       <div className="row my-3">
         <h1>Your Journals</h1>
-        <div className="container mx-1">
-          {notes.length === 0 && "No Entries to display"}
-        </div>
-        {notes.map((note) => {
-          return (
-            <NoteItem
-              key={note._id}
-              updateNote={updateNote}
-              note={note}
-              showAlert={showAlert}
-            />
-          );
-        })}
+        {loading === true ? (
+          <div class="text-center">
+            <div
+              className="spinner-border text-primary"
+              style={{ width: "3rem", height: "3rem" }}
+              role="status"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className="container mx-1">
+              {notes.length === 0 && "No Entries to display"}
+            </div>
+            {notes.map((note) => {
+              return (
+                <NoteItem
+                  key={note._id}
+                  updateNote={updateNote}
+                  note={note}
+                  showAlert={showAlert}
+                />
+              );
+            })}
+          </>
+        )}
       </div>
     </>
   );
