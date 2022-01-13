@@ -51,9 +51,9 @@ const Signup = ({ showAlert }) => {
   };
 
   return (
-    <div className="container mt-2">
-      <h2 className="my-2">Create an account</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="mt-3 row justify-content-center">
+      <form onSubmit={handleSubmit} className="col-lg-4 shadow-lg p-5">
+        <h2 className="my-2">Create an account</h2>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Name

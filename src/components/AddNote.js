@@ -23,12 +23,12 @@ const AddNote = ({ showAlert }) => {
   };
 
   return (
-    <div className="container my-3">
-      <h1>Add your daily journal</h1>
-      <form className="my-3">
+    <div className="row justify-content-center">
+      <form className="col-lg-8 p-5">
+        <h1>Add your daily journal</h1>
         <div className="mb-3">
           <label htmlFor="title" className="form-label fw-bold">
-            Title{" "}
+            Title
             <span className="text-danger">
               (Min. length should be 5 characters)
             </span>

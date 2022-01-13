@@ -43,9 +43,9 @@ const Login = ({ showAlert }) => {
   };
 
   return (
-    <div className="mt-3">
-      <h2>Login to your account</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="mt-3 row justify-content-center">
+      <form onSubmit={handleSubmit} className="col-lg-4 shadow-lg p-5">
+        <h2 className="text-center mb-5 ">Login to your account</h2>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
             Email address
@@ -76,7 +76,7 @@ const Login = ({ showAlert }) => {
         <button type="submit" className="btn btn-primary">
           {loading && (
             <span
-              class="spinner-border spinner-border-sm mx-1"
+              className="spinner-border spinner-border-sm mx-1"
               role="status"
               aria-hidden="true"
             ></span>

@@ -19,7 +19,7 @@ const Notes = ({ showAlert }) => {
     } else {
       history.push("/login");
     }
-  }, [getAllNotes]); // [notes] can be used here as dependancy
+  }, [getAllNotes]);
 
   const ref = useRef(null);
   const refClose = useRef(null);
